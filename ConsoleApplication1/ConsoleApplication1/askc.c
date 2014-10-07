@@ -6,20 +6,27 @@
 int main ()  //2bit k diavasma kateu8eian se pin
 {
 	FILE *input_file; //pointer to read a file
-	FILE *output_file; //pointer to write file
-	//FILE *output2bit;
+	//FILE *output_file; //pointer to write file
+	//FILE *output1bit;
+   //FILE *output2bit;
 
-    char charaktiras[8]; //diavazei charaktira
-	
+    /*char charaktiras[8]; //diavazei charaktira
 	//anoigma arxeiwn
 
 	input_file=fopen("C:\Users\Theofano\Desktop\input_file.txt");
 	//output_file= fopen("C:\Users\Theofano\Desktop\output_file.txt");
 
+	/*
+	ena bit
+
+
+	
 	 
 	 int pin[100];
 	 char provle4i[100], apot[100], apotel[100], prov[100];
 	 bool hm,h_m; //hit miss
+
+	 */
 
 	 /*
 
@@ -56,6 +63,7 @@ int main ()  //2bit k diavasma kateu8eian se pin
 	 provle4i[0]="taken";
 
 	 */
+	/*
 	 int i,z;
 
 	while ((charaktiras[z] = fgetc(input_file))!=EOF)
@@ -220,11 +228,13 @@ int main ()  //2bit k diavasma kateu8eian se pin
 
 
 */
-
+	/*
 //KLEISIMO ARXEIWN
 
 	fclose(input_file);
 	//fclose(output_file);
+
+	*/
 	
 	return(0);
 
