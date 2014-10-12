@@ -1,0 +1,52 @@
+2bit2bit2bit2bit2bit2bit2bit2bitmiss
+miss
+miss
+miss
+miss
+miss
+miss
+miss
+2bitmiss
+miss
+miss
+miss
+miss
+miss
+miss
+miss
+004EFFD8
+004EFFD8
+004EFFE4
+004EFFE4
+004EFFF0
+004EFFF0
+004EFFF0
+004F0000
+004F0008
+004F0008
+004F0008
+004F0000
+004F0008
+004F0008
+004F0008
+004F0000
+004F0008
+004F0008
+004F0008
+004F0000
+004F0008
+004F0008
+004F0008
+004F0000
+ÿÿÿÿÿÿÿÿ
+ÿÿÿÿÿÿÿÿ
+ÿÿÿÿÿÿÿÿ
+ÿÿÿÿÿÿÿÿ
+ÿÿÿÿÿÿÿÿ
+sum of apotelesma=taken 1 
+sum of apotelesma=not taken 1 
+sum of hits 1 
+1/2sum of apotelesma=taken 0 
+sum of apotelesma=not taken 0 
+sum of hits 0 
+0/0
