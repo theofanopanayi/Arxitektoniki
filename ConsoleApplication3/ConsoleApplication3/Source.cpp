@@ -8,19 +8,20 @@ int main ()
 { 
 
 	//gia ena bit
-	int sum1=0; //sum of apotelesma=taken
+	int sum1=0; //sum of all 1 bit
 	//int sum2=1; //sum of apotelesma=not taken
-	int sum3=0; //sum of hits
+	int sum3=0; //sum of hits 1 bit
 	//gia 2 bit
 	int finish = 0;
 	int p=0;
-	int ar1=0;
+	int ar1=0;  // sum of all 2 bit
 	//int ar2=0;
-	int ar3=0;
-	int j=0;
+	int ar3=0; // sum of hits 2 bit
+	int j=0; //counter gia pin
 	bool apot;
 	int x=0;
 	int counter = 0;
+	int branch=0;   //num of branches
 	
 	char charaktiras; //diavazei charaktira
 	char first[8];
@@ -93,6 +94,7 @@ int main ()
 			for (j=0; j<8; j++)
 			{	
 				first[j]=pin[i][j];
+					//branch++;
 		//		fprintf(outf,"%c",first[j]);
 				w=0;
 			}
@@ -106,6 +108,7 @@ int main ()
 				if (first[j]!=pin[i][j])
 				{
 					p++;
+						
 				}
 			}
 			if (p!=0)
@@ -113,6 +116,7 @@ int main ()
 			for (j=0;j<8;j++)
 			{
 				sec[j]=pin[i][j];
+				branch++;
 				//fprintf(outf,"%c",sec[j]);
 			}
 			//fprintf(outf,"\n");
@@ -129,6 +133,7 @@ int main ()
 			 if (sec[j]!=pin[i][j])
 			{
 				p++;
+					//branch++;
 			}
 			}
 			if (p!=0)
@@ -136,11 +141,14 @@ int main ()
 			for (j=0;j<8;j++)
 			{
 			third[j]=pin[i][j];
+			//branch++;
 			}
 			w=2;
 			counter = i;
+
 			i=1000;
 			}
+		
 
 		}
 		/////////////////
@@ -452,6 +460,11 @@ int main ()
 		}
 		charaktiras=fgetc(inf);
 	}
+
+
+
+
+
 	/*fprintf(outf,"\n");
 	for (i=0;i>8;i++)
 	{
@@ -500,6 +513,7 @@ int main ()
 	fprintf (bit2, "%d", ar3); //pososto epitixias hit/all
 	fprintf (bit2, "/");
 	fprintf (bit2, "%d", ar1);
+	fprintf (outf, "branch %d", branch);
 
 	/*
 	 while(finish==0)
@@ -620,6 +634,8 @@ int main ()
 
 	 fclose(inf);
 	 fclose(outf);
+	 fclose(bit1); 
+	 fclose(bit2);
 
 /*
 
