@@ -33,7 +33,7 @@ int main()
 	while (y==0)
 	{
 		y=leitourgia(inf);
-		printf("xaxaxa");
+		//printf("xaxaxa");
 	}
 
 	
