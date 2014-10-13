@@ -77,15 +77,17 @@ int main ()
 				charaktiras = fgetc(inf);
 			} */
 	 
-	 fclose(inf);
-	 inf=fopen("input_file.txt","r");
+
+
+	 fclose(inf); //KLEISIMO INPUT FILE
+	 inf=fopen("input_file.txt","r"); //3ANAANOIGMA
 
 	 for (i=0; i<1000; i++)
 	 {
 		
 				for (j=0; j<8; j++)
 				{
-					charaktiras=fgetc(inf);
+					charaktiras=fgetc(inf);  //PAIRNEI CHARAKTIRA KAI TON VAZEI STIN SWSTI THESI STON PIN
 					pin[i][j]=charaktiras;
 				}		
 
@@ -93,7 +95,7 @@ int main ()
 		{
 			for (j=0; j<8; j++)
 			{	
-				first[j]=pin[i][j];
+				first[j]=pin[i][j];  //VAZEI TIN PRWTI TIMI STON FIRST
 					//branch++;
 		//		fprintf(outf,"%c",first[j]);
 				w=0;
@@ -105,7 +107,7 @@ int main ()
 			p=0;
 			for (j =0;j<8;j++)
 			{
-				if (first[j]!=pin[i][j])
+				if (first[j]!=pin[i][j])  //ELEGXOS AN EINAI ANISOS TOU FIRST
 				{
 					p++;
 						
@@ -115,7 +117,7 @@ int main ()
 			{
 			for (j=0;j<8;j++)
 			{
-				sec[j]=pin[i][j];
+				sec[j]=pin[i][j];  //TOPOTHETI STON SEC THN DEUTERI TIMI
 				branch++;
 				//fprintf(outf,"%c",sec[j]);
 			}
@@ -128,7 +130,7 @@ int main ()
 			p=0;
 		for (j =0;j<8;j++)
 		{
-			if (first[j]!=pin[i][j])
+			if (first[j]!=pin[i][j])   //AN DEN EINAI ISOS ME FIRST KAI SEC TOTE EINAI THIRD
 			{
 			 if (sec[j]!=pin[i][j])
 			{
@@ -144,7 +146,7 @@ int main ()
 			//branch++;
 			}
 			w=2;
-			counter = i;
+			counter = i;  //krata thesi third
 
 			i=1000;
 			}
@@ -157,12 +159,12 @@ int main ()
 			z=0;
 			for (j=0; j<8; j++)
 			{ x=0;
-				if (first[j] = pin[i][j])  //1os branch
+				if (first[j] = pin[i][j])  //1os branch (loop) provle4eis
 				{
 					x++;
 				}
 
-				if (x=8 && z==0);  
+				if (x=8 && z==0);  //molis diavasei first kai to z einai 0 gia first
 				{
 					provle4i1 = 'T';
 					provle4i2 = 'N';
@@ -172,12 +174,12 @@ int main ()
 			}
 			for (j=0; j<8; j++)
 			{ x=0;
-				if (sec[j] = pin [i][j])  //2os branch
+				if (sec[j] = pin [i][j])  //2os branch (loop) provle4eis
 				{
 					x++;
 				}
 
-				if (x=8 && z==1);
+				if (x=8 && z==1);  //diavazei sec k elegxei an z=1
 				{
 					provle4i1 = 'T';  
 					provle4i2 = 'N';
@@ -188,7 +190,7 @@ int main ()
 			for (j=0; j<8; j++)
 			{
 
-				if (pin[i][j] == pin[i+1][j])
+				if (pin[i][j] == pin[i+1][j])  //apotelesmata
 				{
 					apotel = 'T';
 				}
@@ -484,7 +486,7 @@ int main ()
 	fprintf(outf,"\n");
 	fprintf(outf,"\n");
 	*/
-	  for (i=1; i<30;i++)
+	  for (i=1; i<30;i++)   //tipwnw sto output_file tis prwtes 8esis tou pin
 	 {
 		 for (j=0; j<8; j++)
 		 {
@@ -518,7 +520,7 @@ int main ()
 	/*
 	 while(finish==0)
 	 {
-		 for(i=0;i<8;i++)
+		 for(j=0;j<8;j++)
 		 {
 		 pin[0][i]=third[i];
 		 first[i]=third[i];
@@ -594,13 +596,13 @@ int main ()
 	  {
 		  finish=1;
 	  }
-	 }
+}
 
 
-*/
 
 
-		/*
+
+		
 	for (j=0; j<1000; j++)
 	{
 
@@ -629,33 +631,15 @@ int main ()
 	
 
 
-		*/	
+	*/	
 
-
+//KLEISIMO ARXEIWN
 	 fclose(inf);
 	 fclose(outf);
 	 fclose(bit1); 
 	 fclose(bit2);
 
-/*
 
-	//3anaanoigmaaa
-
-
-	 inf=fopen("input_file.txt","r");
-	 outf= fopen("output_file.txt","w");
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-//KLEISIMO ARXEIWN
-
-	fclose(input_file);
-	fclose(output_file);
-
-
-*/
 	return (0);
 }
 
