@@ -8,9 +8,9 @@ int main ()
 { 
 
 	//gia ena bit
-	int sum1=1; //sum of apotelesma=taken
-	int sum2=1; //sum of apotelesma=not taken
-	int sum3=1; //sum of hits
+	int sum1=0; //sum of apotelesma=taken
+	//int sum2=1; //sum of apotelesma=not taken
+	int sum3=0; //sum of hits
 	//gia 2 bit
 	int finish = 0;
 	int p=0;
@@ -44,8 +44,12 @@ int main ()
 
 	FILE *inf;
 	FILE *outf;
+	FILE *bit1;
+	FILE *bit2;
 	inf=fopen("input_file.txt","r");
 	outf= fopen("output_file.txt","w");
+	bit1= fopen("output_1bitfile.txt","w");
+	bit2= fopen("output_2bitfile.txt","w");
 	
 	charaktiras = fgetc(inf);
 
@@ -68,9 +72,9 @@ int main ()
 					{
 						fprintf (outf, "error num of chars");
 						return 0;
-					}*/
+					}
 				charaktiras = fgetc(inf);
-			}
+			} */
 	 
 	 fclose(inf);
 	 inf=fopen("input_file.txt","r");
@@ -150,7 +154,7 @@ int main ()
 					x++;
 				}
 
-				if (x=8 && z==0);
+				if (x=8 && z==0);  
 				{
 					provle4i1 = 'T';
 					provle4i2 = 'N';
@@ -167,7 +171,7 @@ int main ()
 
 				if (x=8 && z==1);
 				{
-					provle4i1 = 'T';
+					provle4i1 = 'T';  
 					provle4i2 = 'N';
 				}
 
@@ -184,21 +188,23 @@ int main ()
 				{
 					apotel = 'N';
 				}
-			}
+			//}
 
-			for (j=0; j<8; j++)
-			{
+			//for (j=0; j<8; j++)
+			//{
 			if (provle4i1 == 'T' && apotel == 'T')
 			{
 				//provle4i = 'T';
-				fprintf (outf, "hit\n");
+				fprintf (bit1, "hit\n");
 				hm = 'H';
 				sum3=sum3+1;
+				sum1++;
 			}
 			else if (provle4i1 == 'T' && apotel == 'N')
 			{
 				hm = 'M';
-				fprintf (outf, "miss\n");
+				fprintf (bit1, "miss\n");
+				sum1++;
 				//provle4i = 'N';
 				//fprintf (outf, "not taken");
 				
@@ -206,33 +212,76 @@ int main ()
 			else if (provle4i1 == 'N' && apotel == 'T')
 			{
 				hm = 'M';
-				fprintf (outf, "miss\n");
+				fprintf (bit1, "miss\n");
+				sum1++;
 				//provle4i2 = 'T';
 				
 			}
 			else if (provle4i1 == 'N' && apotel == 'N')
 			{
 				hm = 'H';
-				fprintf (outf, "hit\n");
+				sum1++;
+				fprintf (bit1, "hit\n");
 				sum3=sum3+1;
 				//provle4i2 = 'N';
 				
 			}
 
 
+
+
+			//gia provle4i 2
+
+
+
+
+			if (provle4i2 == 'T' && apotel == 'T')
+			{
+				//provle4i = 'T';
+				fprintf (bit1, "hit\n");
+				hm = 'H';
+				sum3=sum3+1;
+				sum1++;
 			}
+			else if (provle4i2 == 'T' && apotel == 'N')
+			{
+				hm = 'M';
+				fprintf (bit1, "miss\n");
+				sum1++;
+				//provle4i = 'N';
+				//fprintf (outf, "not taken");
+				
+			}
+			else if (provle4i2 == 'N' && apotel == 'T')
+			{
+				hm = 'M';
+				fprintf (bit1, "miss\n");
+				sum1++;
+				//provle4i2 = 'T';
+				
+			}
+			else if (provle4i2 == 'N' && apotel == 'N')
+			{
+				hm = 'H';
+				sum1++;
+				fprintf (bit1, "hit\n");
+				sum3=sum3+1;
+				//provle4i2 = 'N';
+				
+			}
+
+
+
+
+
+			//}
 				
 
-		}
 
-
-
-
-
+			}
 
 	//fprintf(outf, "2bit");
-	for  (i=0; i<counter; i++)
-		{ 
+	
 			for (j=0; j<8; j++)
 		{
 
@@ -241,12 +290,12 @@ int main ()
 				prov='T';
 				h_m='H';
 				ar3=ar3+1;
-				fprintf (outf, "hit\n");
+				fprintf (bit2, "hit\n");
 			}
 			else if (provle4i1=='T' && apotel=='N')
 			{
 				h_m='M';
-				fprintf (outf, "miss\n");
+				fprintf (bit2, "miss\n");
 				provle4i2='I';
 				
 			}
@@ -256,13 +305,13 @@ int main ()
 				h_m='H';
 				ar3=ar3+1;
 				provle4i2='T';
-				fprintf (outf, "hit\n");
+				fprintf (bit2, "hit\n");
 				
 			}
 			else if (provle4i1=='I' && apotel=='N')
 			{
 				h_m='M';
-				fprintf (outf, "miss\n");
+				fprintf (bit2, "miss\n");
 				provle4i2='D';
 				
 			}
@@ -271,20 +320,20 @@ int main ()
 				h_m='H';
 				ar3=ar3+1;
 				provle4i2='D';
-				fprintf (outf, "hit\n");
+				fprintf (bit2, "hit\n");
 				
 			}
 			else if (provle4i1=='D' && apotel=='T')
 			{
 				h_m='M';
-				fprintf (outf , "miss\n");
+				fprintf (bit2 , "miss\n");
 				provle4i2='N';
 				
 			}
 			else if (provle4i1=='N' && apotel=='T')
 			{
 				h_m='M';
-				fprintf (outf, "miss\n");
+				fprintf (bit2, "miss\n");
 				provle4i2 = 'T';
 				
 			}
@@ -293,7 +342,7 @@ int main ()
 				hm='H';
 				ar3=ar3+1;
 				provle4i2='N';
-				fprintf (outf, "hit\n");
+				fprintf (bit2, "hit\n");
 				
 			}
 
@@ -344,25 +393,27 @@ int main ()
 
 
 
-	fprintf(outf, "sum of apotelesma=taken %d \n", sum1);
-	fprintf(outf, "sum of apotelesma=not taken %d \n", sum2);
-	fprintf(outf, "sum of hits %d \n", sum3);
+	  //fprintf(bit1, "sum of apotelesma=taken %d \n", sum1);
+	  //fprintf(bit1, "sum of apotelesma=not taken %d \n", sum2);
+	  //fprintf(bit1, "sum of hits %d \n", sum3);
 	
-	fprintf (outf, "%d", sum3); //pososto epitixias hit/all
-	fprintf (outf, "/");
-	fprintf (outf, "%d", sum2+sum1);
+	fprintf (bit1, "%d", sum3); //pososto epitixias hit/all
+	fprintf (bit1, "/");
+	fprintf (bit1, "%d", sum1);
 
 
 	  
-	fprintf(outf, "sum of apotelesma=taken %d \n", ar1);
-	fprintf(outf, "sum of apotelesma=not taken %d \n", ar2);
-	fprintf(outf, "sum of hits %d \n", ar3);
+	//fprintf(bit2, "sum of apotelesma=taken %d \n", ar1);
+	//fprintf(bit2, "sum of apotelesma=not taken %d \n", ar2);
+	//fprintf(bit2, "sum of hits %d \n", ar3);
 	
-	fprintf (outf, "%d", ar3); //pososto epitixias hit/all
-	fprintf (outf, "/");
-	fprintf (outf, "%d", ar2+ar1);
+	fprintf (bit2, "%d", ar3); //pososto epitixias hit/all
+	fprintf (bit2, "/");
+	fprintf (bit2, "%d", ar2+ar1);
 
-	/* while(finish==0)
+
+	/*
+	 while(finish==0)
 	 {
 		 for(i=0;i<8;i++)
 		 {
@@ -440,10 +491,10 @@ int main ()
 	  {
 		  finish=1;
 	  }
-	 }*/
+	 }
 
 
-
+*/
 
 
 		/*
@@ -504,3 +555,4 @@ int main ()
 }
 
 
+}

@@ -1,0 +1,17 @@
+hit
+miss
+hit
+miss
+hit
+miss
+hit
+miss
+hit
+miss
+hit
+miss
+miss
+hit
+miss
+hit
+8/16
