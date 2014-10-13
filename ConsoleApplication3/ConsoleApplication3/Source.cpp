@@ -15,7 +15,7 @@ int main ()
 	int finish = 0;
 	int p=0;
 	int ar1=0;
-	int ar2=0;
+	//int ar2=0;
 	int ar3=0;
 	int j=0;
 	bool apot;
@@ -192,6 +192,10 @@ int main ()
 
 			//for (j=0; j<8; j++)
 			//{
+
+
+
+			// 1 bit 1os branch
 			if (provle4i1 == 'T' && apotel == 'T')
 			{
 				//provle4i = 'T';
@@ -230,7 +234,7 @@ int main ()
 
 
 
-			//gia provle4i 2
+			//gia provle4i 2 2os branch
 
 
 
@@ -285,26 +289,34 @@ int main ()
 			for (j=0; j<8; j++)
 		{
 
+
+			//1os branch 2 bit
+
+
+
 			if (provle4i1=='T' && apotel=='T')      //T TAKEN1  N NOT_TAKEN1  I TAKEN1 D NOT_TAKEN2
 			{
-				prov='T';
+				//prov='T';
 				h_m='H';
 				ar3=ar3+1;
+				ar1++;
 				fprintf (bit2, "hit\n");
 			}
 			else if (provle4i1=='T' && apotel=='N')
 			{
 				h_m='M';
 				fprintf (bit2, "miss\n");
-				provle4i2='I';
+				//provle4i2='I';
+				ar1++;
 				
 			}
 
 			else if (provle4i1=='I' && apotel=='T')
 			{
 				h_m='H';
+				ar1++;
 				ar3=ar3+1;
-				provle4i2='T';
+				//provle4i2='T';
 				fprintf (bit2, "hit\n");
 				
 			}
@@ -312,42 +324,120 @@ int main ()
 			{
 				h_m='M';
 				fprintf (bit2, "miss\n");
-				provle4i2='D';
+				//provle4i2='D';
+				ar1++;
 				
 			}
 			else if (provle4i1=='D' && apotel=='N')
 			{
 				h_m='H';
 				ar3=ar3+1;
-				provle4i2='D';
+				//provle4i2='D';
+				ar1++;
 				fprintf (bit2, "hit\n");
 				
 			}
 			else if (provle4i1=='D' && apotel=='T')
 			{
 				h_m='M';
+				ar1++;
 				fprintf (bit2 , "miss\n");
-				provle4i2='N';
+				//provle4i2='N';
 				
 			}
 			else if (provle4i1=='N' && apotel=='T')
 			{
 				h_m='M';
 				fprintf (bit2, "miss\n");
-				provle4i2 = 'T';
+				//provle4i2 = 'T';
+				ar1++;
 				
 			}
 			else if (provle4i1=='N' && apotel=='N')
 			{
 				hm='H';
 				ar3=ar3+1;
-				provle4i2='N';
+				//provle4i2='N';
+				ar1++;
 				fprintf (bit2, "hit\n");
 				
 			}
 
 
-	
+	//2os branch 2 bit
+
+
+
+
+			
+			if (provle4i2=='T' && apotel=='T')      //T TAKEN1  N NOT_TAKEN1  I TAKEN1 D NOT_TAKEN2
+			{
+				//prov='T';
+				h_m='H';
+				ar3=ar3+1;
+				ar1++;
+				fprintf (bit2, "hit\n");
+			}
+			else if (provle4i2=='T' && apotel=='N')
+			{
+				h_m='M';
+				fprintf (bit2, "miss\n");
+				//provle4i2='I';
+				ar1++;
+				
+			}
+
+			else if (provle4i2=='I' && apotel=='T')
+			{
+				h_m='H';
+				ar1++;
+				ar3=ar3+1;
+				//provle4i2='T';
+				fprintf (bit2, "hit\n");
+				
+			}
+			else if (provle4i2=='I' && apotel=='N')
+			{
+				h_m='M';
+				fprintf (bit2, "miss\n");
+				//provle4i2='D';
+				ar1++;
+				
+			}
+			else if (provle4i2=='D' && apotel=='N')
+			{
+				h_m='H';
+				ar3=ar3+1;
+				//provle4i2='D';
+				ar1++;
+				fprintf (bit2, "hit\n");
+				
+			}
+			else if (provle4i2=='D' && apotel=='T')
+			{
+				h_m='M';
+				ar1++;
+				fprintf (bit2 , "miss\n");
+				//provle4i2='N';
+				
+			}
+			else if (provle4i2=='N' && apotel=='T')
+			{
+				h_m='M';
+				fprintf (bit2, "miss\n");
+				//provle4i2 = 'T';
+				ar1++;
+				
+			}
+			else if (provle4i2=='N' && apotel=='N')
+			{
+				hm='H';
+				ar3=ar3+1;
+				//provle4i2='N';
+				ar1++;
+				fprintf (bit2, "hit\n");
+				
+			}
 			
 	}
 
@@ -409,8 +499,7 @@ int main ()
 	
 	fprintf (bit2, "%d", ar3); //pososto epitixias hit/all
 	fprintf (bit2, "/");
-	fprintf (bit2, "%d", ar2+ar1);
-
+	fprintf (bit2, "%d", ar1);
 
 	/*
 	 while(finish==0)
