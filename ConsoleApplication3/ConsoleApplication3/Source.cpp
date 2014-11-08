@@ -10,21 +10,36 @@ int leitourgia (FILE *inf);
 FILE *outf;
 FILE *bit1;
 FILE *bit2;
+FILE *sig;
 
 int main()
 
 {
 	FILE *inf;
 	int y=0;
+	int ap; //apantisi an 8lei arxeia
 	inf=fopen("input_file.txt","r");
+
+	printf( "theleis arxeia? 0 or 1 \n");
+	scanf ("%d", &ap);
+	
+	
+	if (ap==1)
+	{
+
 	outf= fopen("output_file.txt","w");
 	bit1= fopen("output_1bitfile.txt","w");
 	bit2= fopen("output_2bitfile.txt","w");
-	//y=leitourgia(inf);
-	
+	sig= fopen ("apotelesmata.txt", "w");
 
-		
-	
+	}
+
+	else if (ap==0)
+	{
+		sig= fopen ("apotelesmata.txt", "w");
+	}
+
+	//y=leitourgia(inf);
 	
 
 
@@ -32,16 +47,24 @@ int main()
 
 	while (y==0)
 	{
-		y=leitourgia(inf);
+		y=leitourgia(inf, ap);
 		//printf("xaxaxa");
 	}
 
 	
 //KLEISIMO ARXEIWN
+	if (ap==1)
+	{
 	 fclose(inf);
 	 fclose(outf);
 	 fclose(bit1); 
 	 fclose(bit2);
+	 fclose(sig);
+	}
+	else if (ap==0)
+	{
+		fclose(sig);
+	}
 
 
 	return(0);
@@ -52,7 +75,7 @@ int main()
 
 
 
-int leitourgia (FILE *inf)  
+int leitourgia (FILE *inf, int ap)  
 { 
 
 	//gia ena bit
@@ -86,6 +109,9 @@ int leitourgia (FILE *inf)
 	char provle4i2;
 	char apotel;
 	char prov;
+	//int ap;
+
+
 	
 
 	
@@ -251,7 +277,10 @@ int leitourgia (FILE *inf)
 			if (provle4i1 == 'T' && apotel == 'T')
 			{
 				//provle4i = 'T';
+				if (ap==1)
+				{
 				fprintf (bit1, "hit\n");
+				}
 				hm = 'H';
 				sum3=sum3+1;
 				sum1++;
@@ -259,7 +288,10 @@ int leitourgia (FILE *inf)
 			else if (provle4i1 == 'T' && apotel == 'N')
 			{
 				hm = 'M';
+				if (ap==1)
+				{
 				fprintf (bit1, "miss\n");
+				}
 				sum1++;
 				//provle4i = 'N';
 				//fprintf (outf, "not taken");
@@ -268,7 +300,10 @@ int leitourgia (FILE *inf)
 			else if (provle4i1 == 'N' && apotel == 'T')
 			{
 				hm = 'M';
+				if (ap==1)
+				{
 				fprintf (bit1, "miss\n");
+				}
 				sum1++;
 				//provle4i2 = 'T';
 				
@@ -277,7 +312,10 @@ int leitourgia (FILE *inf)
 			{
 				hm = 'H';
 				sum1++;
+				if (ap==1)
+				{
 				fprintf (bit1, "hit\n");
+				}
 				sum3=sum3+1;
 				//provle4i2 = 'N';
 				
@@ -294,7 +332,10 @@ int leitourgia (FILE *inf)
 			if (provle4i2 == 'T' && apotel == 'T')
 			{
 				//provle4i = 'T';
+				if (ap==1)
+				{
 				fprintf (bit1, "hit\n");
+				}
 				hm = 'H';
 				sum3=sum3+1;
 				sum1++;
@@ -302,7 +343,10 @@ int leitourgia (FILE *inf)
 			else if (provle4i2 == 'T' && apotel == 'N')
 			{
 				hm = 'M';
+				if (ap==1)
+				{
 				fprintf (bit1, "miss\n");
+				}
 				sum1++;
 				//provle4i = 'N';
 				//fprintf (outf, "not taken");
@@ -311,7 +355,10 @@ int leitourgia (FILE *inf)
 			else if (provle4i2 == 'N' && apotel == 'T')
 			{
 				hm = 'M';
+				if (ap==1)
+				{
 				fprintf (bit1, "miss\n");
+				}
 				sum1++;
 				//provle4i2 = 'T';
 				
@@ -320,7 +367,10 @@ int leitourgia (FILE *inf)
 			{
 				hm = 'H';
 				sum1++;
+				if (ap==1)
+				{
 				fprintf (bit1, "hit\n");
+				}
 				sum3=sum3+1;
 				//provle4i2 = 'N';
 				
@@ -352,12 +402,18 @@ int leitourgia (FILE *inf)
 				h_m='H';
 				ar3=ar3+1;
 				ar1++;
+				if (ap==1)
+				{
 				fprintf (bit2, "hit\n");
+				}
 			}
 			else if (provle4i1=='T' && apotel=='N')
 			{
 				h_m='M';
+				if (ap==1)
+				{
 				fprintf (bit2, "miss\n");
+				}
 				//provle4i2='I';
 				ar1++;
 				
@@ -369,13 +425,19 @@ int leitourgia (FILE *inf)
 				ar1++;
 				ar3=ar3+1;
 				//provle4i2='T';
+				if (ap==1)
+				{
 				fprintf (bit2, "hit\n");
+				}
 				
 			}
 			else if (provle4i1=='I' && apotel=='N')
 			{
 				h_m='M';
+				if (ap==1)
+				{
 				fprintf (bit2, "miss\n");
+				}
 				//provle4i2='D';
 				ar1++;
 				
@@ -386,21 +448,29 @@ int leitourgia (FILE *inf)
 				ar3=ar3+1;
 				//provle4i2='D';
 				ar1++;
+				if (ap==1)
+				{
 				fprintf (bit2, "hit\n");
-				
+				}
 			}
 			else if (provle4i1=='D' && apotel=='T')
 			{
 				h_m='M';
 				ar1++;
+				if (ap==1)
+				{
 				fprintf (bit2 , "miss\n");
+				}
 				//provle4i2='N';
 				
 			}
 			else if (provle4i1=='N' && apotel=='T')
 			{
 				h_m='M';
+				if (ap==1)
+				{
 				fprintf (bit2, "miss\n");
+				}
 				//provle4i2 = 'T';
 				ar1++;
 				
@@ -411,7 +481,10 @@ int leitourgia (FILE *inf)
 				ar3=ar3+1;
 				//provle4i2='N';
 				ar1++;
+				if (ap==1)
+				{
 				fprintf (bit2, "hit\n");
+				}
 				
 			}
 
@@ -428,12 +501,18 @@ int leitourgia (FILE *inf)
 				h_m='H';
 				ar3=ar3+1;
 				ar1++;
+				if (ap==1)
+				{
 				fprintf (bit2, "hit\n");
+				}
 			}
 			else if (provle4i2=='T' && apotel=='N')
 			{
 				h_m='M';
+				if (ap==1)
+				{
 				fprintf (bit2, "miss\n");
+				}
 				//provle4i2='I';
 				ar1++;
 				
@@ -445,13 +524,19 @@ int leitourgia (FILE *inf)
 				ar1++;
 				ar3=ar3+1;
 				//provle4i2='T';
+				if (ap==1)
+				{
 				fprintf (bit2, "hit\n");
+				}
 				
 			}
 			else if (provle4i2=='I' && apotel=='N')
 			{
 				h_m='M';
+				if (ap==1)
+				{
 				fprintf (bit2, "miss\n");
+				}
 				//provle4i2='D';
 				ar1++;
 				
@@ -462,21 +547,30 @@ int leitourgia (FILE *inf)
 				ar3=ar3+1;
 				//provle4i2='D';
 				ar1++;
+				if (ap==1)
+				{
 				fprintf (bit2, "hit\n");
+				}
 				
 			}
 			else if (provle4i2=='D' && apotel=='T')
 			{
 				h_m='M';
 				ar1++;
+				if (ap==1)
+				{
 				fprintf (bit2 , "miss\n");
+				}
 				//provle4i2='N';
 				
 			}
 			else if (provle4i2=='N' && apotel=='T')
 			{
 				h_m='M';
+				if (ap==1)
+				{
 				fprintf (bit2, "miss\n");
+				}
 				//provle4i2 = 'T';
 				ar1++;
 				
@@ -487,7 +581,10 @@ int leitourgia (FILE *inf)
 				ar3=ar3+1;
 				//provle4i2='N';
 				ar1++;
+				if (ap==1)
+				{
 				fprintf (bit2, "hit\n");
+				}
 				
 			}
 			
@@ -535,9 +632,15 @@ int leitourgia (FILE *inf)
 	 {
 		 for (j=0; j<8; j++)
 		 {
+			 if (ap==1)
+				{
 			 fprintf (outf, "%c", pin[i][j]);
+			 }
 		 }
+		 if (ap==1)
+				{
 		 fprintf(outf,"\n");
+		 }
 	 }
 
 
@@ -547,19 +650,24 @@ int leitourgia (FILE *inf)
 	  //fprintf(bit1, "sum of apotelesma=not taken %d \n", sum2);
 	  //fprintf(bit1, "sum of hits %d \n", sum3);
 	
-	fprintf (bit1, "%d", sum3); //pososto epitixias hit/all gia 1 bit
-	fprintf (bit1, "/");
-	fprintf (bit1, "%d", sum1);
+	fprintf(sig, "apotelesma ena bit: ");
+	fprintf (sig, "%d", sum3); //pososto epitixias hit/all gia 1 bit
+	fprintf (sig, "/");
+	fprintf (sig, "%d \n", sum1);
+
 
 
 	  
 	//fprintf(bit2, "sum of apotelesma=taken %d \n", ar1);
 	//fprintf(bit2, "sum of apotelesma=not taken %d \n", ar2);
 	//fprintf(bit2, "sum of hits %d \n", ar3);
+
+
 	
-	fprintf (bit2, "%d", ar3); //pososto epitixias hit/all gia 2 bit
-	fprintf (bit2, "/");
-	fprintf (bit2, "%d", ar1);
+	fprintf(sig, "apotelesmata gia 2 bit: ");
+	fprintf (sig, "%d", ar3); //pososto epitixias hit/all gia 2 bit
+	fprintf (sig, "/");
+	fprintf (sig, "%d \n", ar1);
 
 
 

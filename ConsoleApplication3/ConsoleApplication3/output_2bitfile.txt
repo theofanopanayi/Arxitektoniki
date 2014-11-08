@@ -14,4 +14,3 @@ miss
 hit
 miss
 hit
-8/16
