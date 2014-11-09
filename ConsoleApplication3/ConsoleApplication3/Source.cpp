@@ -4,12 +4,13 @@
 #define true 1
 #define false 0
 
-int leitourgia (FILE *inf);
+int leitourgia (FILE *inf, int ap);
 
 
-FILE *outf;
+FILE*outf;
 FILE *bit1;
 FILE *bit2;
+FILE *col;
 FILE *sig;
 
 int main()
@@ -30,14 +31,11 @@ int main()
 	outf= fopen("output_file.txt","w");
 	bit1= fopen("output_1bitfile.txt","w");
 	bit2= fopen("output_2bitfile.txt","w");
+	col= fopen("correlating.txt","w");
+
+	}
+
 	sig= fopen ("apotelesmata.txt", "w");
-
-	}
-
-	else if (ap==0)
-	{
-		sig= fopen ("apotelesmata.txt", "w");
-	}
 
 	//y=leitourgia(inf);
 	
@@ -55,16 +53,14 @@ int main()
 //KLEISIMO ARXEIWN
 	if (ap==1)
 	{
-	 fclose(inf);
 	 fclose(outf);
 	 fclose(bit1); 
 	 fclose(bit2);
-	 fclose(sig);
+	 fclose(col);
 	}
-	else if (ap==0)
-	{
+
+		fclose(inf);
 		fclose(sig);
-	}
 
 
 	return(0);
@@ -77,6 +73,8 @@ int main()
 
 int leitourgia (FILE *inf, int ap)  
 { 
+
+
 
 	//gia ena bit
 	int sum1=0; //sum of all 1 bit
@@ -92,7 +90,7 @@ int leitourgia (FILE *inf, int ap)
 	bool apot;
 	int x=0;
 	int counter = 0;
-	int branch=0;   //num of branches
+	//int branch=0;   //num of branches
 	
 	char charaktiras; //diavazei charaktira
 	char first[8];
@@ -109,10 +107,17 @@ int leitourgia (FILE *inf, int ap)
 	char provle4i2;
 	char apotel;
 	char prov;
-	//int ap;
-
-
-	
+	int colbit1sum=0;
+	int colsum=0;
+	int hitcol=0;
+	int olcol=0;
+	char real;
+	char upd1;
+	char upd2;
+	char pred1;
+	char pred2;
+	char pred;
+	char now;
 
 	
 	//anoigma arxeiwn
@@ -148,8 +153,8 @@ int leitourgia (FILE *inf, int ap)
 
 
 	// fclose(inf); //KLEISIMO INPUT FILE
-	 inf=fopen("input_file.txt","r"); //3ANAANOIGMA
-
+	 //inf=fopen("input_file.txt","r"); //3ANAANOIGMA
+	printf("xaxaxa1");
 	 for (i=0; i<1000; i++)
 	 {
 		
@@ -186,7 +191,7 @@ int leitourgia (FILE *inf, int ap)
 			for (j=0;j<8;j++)
 			{
 				sec[j]=pin[i][j];  //TOPOTHETI STON SEC THN DEUTERI TIMI
-				branch++;
+				//branch++;
 				//fprintf(outf,"%c",sec[j]);
 			}
 			//fprintf(outf,"\n");
@@ -599,7 +604,7 @@ int leitourgia (FILE *inf, int ap)
 
 
 		}
-		charaktiras=fgetc(inf);
+		//charaktiras=fgetc(inf);
 	
 	}
 
@@ -1074,12 +1079,308 @@ int leitourgia (FILE *inf, int ap)
 */
 
 
-			if (charaktiras==EOF)
+
+	///////////////////////////////////////////////////////////////////////////
+
+	fclose(inf);
+	printf("hahah2");
+
+	inf=fopen("input_file.txt","r"); //3ANAANOIGMA
+
+	////////////correlating////////////
+
+		apotel='T';
+		real= 'T';
+		pred1= 'T';
+		pred2= 'T';
+		upd1= 'T';
+		upd2= 'T';
+		pred= 'T';
+		now=apotel;
+
+	
+
+	 for (i=0; i<1000; i++)
+	 {		
+				for (j=0; j<8; j++)
+				{
+					charaktiras=fgetc(inf);  //PAIRNEI CHARAKTIRA KAI TON VAZEI STIN SWSTI THESI STON PIN
+					pin[i][j]=charaktiras;
+				}		
+
+		if (i==0)
+		{
+			for (j=0; j<8; j++)
+			{	
+				first[j]=pin[i][j];  //VAZEI TIN PRWTI TIMI STON FIRST
+				w=0;
+			}
+			//fprintf(outf,"\n");
+		}
+		else if (i>=1 && w==0)
+		{
+			p=0;
+			for (j =0;j<8;j++)
+			{
+				if (first[j]!=pin[i][j])  //ELEGXOS AN EINAI ANISOS TOU FIRST
+				{
+					p++;
+						
+				}
+			}
+			if (p!=0)
+			{
+			for (j=0;j<8;j++)
+			{
+				sec[j]=pin[i][j];  //TOPOTHETI STON SEC THN DEUTERI TIMI
+			}
+			w=1;
+		    }
+
+		}
+			else if (i>=1  && w==1)
+			{
+				p=0;
+				for (j =0;j<8;j++)
+				{
+				if (first[j]!=pin[i][j])   //AN DEN EINAI ISOS ME FIRST KAI SEC TOTE EINAI THIRD
+				{
+				if (sec[j]!=pin[i][j])
+				{
+					p++;
+				}
+			}
+				}
+		}
+			if (p!=0)
+			{
+				for (j=0;j<8;j++)
+				{
+					third[j]=pin[i][j];
+				}
+				w=2;
+				counter = i;  //krata thesi pou stamata
+				i=1000;
+			}
+		
+
+		}
+		
+		///////////////
+	for  (i=0; i<counter; i++)
+		{ 
+			z=0;
+			for (j=0; j<8; j++)
+			{ x=0;
+
+
+
+			if (first[j] = pin[i][j])  //1os branch (loop) provle4eis
+				{
+					x++;
+				}
+
+				if (x=8 && z==0);  //molis diavasei first kai to z einai 0 gia first
+				{
+					provle4i1 = 'T';
+					provle4i2 = 'N';
+				}
+
+				z=1;
+			}
+			for (j=0; j<8; j++)
+			{ x=0;
+				if (sec[j] = pin [i][j])  //2os branch (loop) provle4eis
+				{
+					x++;
+				}
+
+				if (x=8 && z==1);  //diavazei sec k elegxei an z=1
+				{
+					provle4i1 = 'T';  
+					provle4i2 = 'N';
+				}
+
+			}
+
+			for (j=0; j<8; j++)
+			{
+
+				if (pin[i][j] == pin[i+1][j])  //apotelesmata
+				{
+					apotel = 'T';
+				}
+				else
+				{
+					apotel = 'N';
+				}
+
+
+				if (first[j] == sec[j])  //1os bit
+				{
+					provle4i1 = 'T';
+					provle4i2 = 'N';
+					apotel = 'T';
+					colbit1sum++;
+			
+				if (provle4i1 == 'T' && apotel == 'T')
+				{
+				if (ap==1)
+				{
+				fprintf (col, "hit\n");
+				}
+				hitcol++;
+				olcol++;
+				//hm = 'H';
+				//sum3=sum3+1;
+				//sum1++;
+			}
+			else if (provle4i1 == 'T' && apotel == 'N')
+			{
+				//hm = 'M';
+				if (ap==1)
+				{
+				fprintf (col, "miss\n");
+				}
+				olcol++;
+				//sum1++;
+				//provle4i = 'N';
+				//fprintf (outf, "not taken");
+				
+			}
+			else if (provle4i1 == 'N' && apotel == 'T')
+			{
+				//hm = 'M';
+				if (ap==1)
+				{
+				fprintf (col, "miss\n");
+				}
+				olcol++;
+				//sum1++;
+				//provle4i2 = 'T';
+				
+			}
+			else if (provle4i1 == 'N' && apotel == 'N')
+			{
+				//hm = 'H';
+				//sum1++;
+				if (ap==1)
+				{
+				fprintf (col, "hit\n");
+				}
+				hitcol++;
+				olcol++;
+				//sum3=sum3+1;
+				//provle4i2 = 'N';
+				
+			}
+
+
+			}
+
+
+	else if (first[j] != pin[i][j])
+	{
+		olcol++;
+		/*real= 'T';
+		pred1= 'T';
+		pred2= 'T';
+		upd1= 'T';
+		upd2= 'T';
+		pred= 'T';
+		now=apotel;
+		*/
+
+		if (real='T')
+		{
+			
+			pred=pred1;
+			
+		}
+		else
+		{
+			pred=pred2;
+		}
+
+		if (real=pred)
+		{
+			hitcol++;
+		}
+		
+
+		if (now!=pred)
+		{
+			if (real='T')
+			{
+				upd1 = 'N';
+			}
+			else
+			{
+				upd2 = 'N';
+			}
+		}
+
+			real=now;
+
+			if (pin [i][j] == first[j] )
+			{
+				pred1=upd1;
+				pred2=upd2;
+			}
+
+	
+
+	}
+
+
+
+	first[j] = pin[i+1][j];
+	third[j]=sec[j];
+	sec[j]= pin[i][j];
+
+		
+		
+
+
+
+
+
+
+	}
+
+
+
+		
+		charaktiras=fgetc(inf);
+
+		if (charaktiras==EOF)
+			{
 			return 1;
+			}
+
+	}
+
+	
+
+	if (ap==1)
+	{
+		fprintf(col, "update pred1 %c \n", upd1);
+		fprintf(col, "update pred2 %c \n" , upd2);
+		fprintf(col, "kalesma 1bit : %d fores \n", colbit1sum);
+		fprintf(col, "num of iner loops %d \n", olcol);
+	}
 
 
-	return (0);
+	fprintf(sig, "apotelesmata gia correlating: ");
+	fprintf (sig, "%d", hitcol); //pososto epitixias hit/all gia 2 bit
+	fprintf (sig, "/");
+	fprintf (sig, "%d \n", olcol);
+
+
+
+			
+
+	//return (0);
 }
-
 
 

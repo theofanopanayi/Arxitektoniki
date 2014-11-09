@@ -1,2 +1,3 @@
-apotelesma ena bit: 8/16 
-apotelesmata gia 2 bit: 8/16 
+apotelesma ena bit: 16/32 
+apotelesmata gia 2 bit: 16/32 
+apotelesmata gia correlating: 0/0 

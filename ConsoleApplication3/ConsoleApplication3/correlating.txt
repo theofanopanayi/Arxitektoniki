@@ -1,0 +1,4 @@
+update pred1 T 
+update pred2 T 
+kalesma 1bit : 0 fores 
+num of iner loops 0 
