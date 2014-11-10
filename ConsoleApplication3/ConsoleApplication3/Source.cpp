@@ -605,7 +605,7 @@ int leitourgia (FILE *inf, int ap)
 
 
 		}
-		//charaktiras=fgetc(inf);
+		charaktiras=fgetc(inf);
 	
 	}
 
@@ -1236,7 +1236,7 @@ int leitourgia (FILE *inf, int ap)
 				fprintf (col, "hit\n");
 				}
 				hitcol++;
-				olcol++;
+				//olcol++;
 				//hm = 'H';
 				//sum3=sum3+1;
 				//sum1++;
@@ -1248,7 +1248,7 @@ int leitourgia (FILE *inf, int ap)
 				{
 				fprintf (col, "miss\n");
 				}
-				olcol++;
+				//olcol++;
 				//sum1++;
 				//provle4i = 'N';
 				//fprintf (outf, "not taken");
@@ -1261,7 +1261,7 @@ int leitourgia (FILE *inf, int ap)
 				{
 				fprintf (col, "miss\n");
 				}
-				olcol++;
+				//olcol++;
 				//sum1++;
 				//provle4i2 = 'T';
 				
@@ -1275,7 +1275,7 @@ int leitourgia (FILE *inf, int ap)
 				fprintf (col, "hit\n");
 				}
 				hitcol++;
-				olcol++;
+				//olcol++;
 				//sum3=sum3+1;
 				//provle4i2 = 'N';
 				
@@ -1284,10 +1284,10 @@ int leitourgia (FILE *inf, int ap)
 
 			}
 
-
+	
 	else if (first[j] != pin[i][j])
 	{
-		olcol++;
+		//olcol++;
 		/*real= 'T';
 		pred1= 'T';
 		pred2= 'T';
@@ -1296,7 +1296,7 @@ int leitourgia (FILE *inf, int ap)
 		pred= 'T';
 		now=apotel;
 		*/
-
+		printf("lalallalal");
 		if (real='T')
 		{
 			
@@ -1366,7 +1366,7 @@ int leitourgia (FILE *inf, int ap)
 
 	}
 
-	
+	olcol= sum1-colbit1sum;
 
 	if (ap==1)
 	{
