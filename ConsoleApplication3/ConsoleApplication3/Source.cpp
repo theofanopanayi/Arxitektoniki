@@ -118,6 +118,7 @@ int leitourgia (FILE *inf, int ap)
 	char pred2;
 	char pred;
 	char now;
+	int counter2=0;
 
 	
 	//anoigma arxeiwn
@@ -154,7 +155,7 @@ int leitourgia (FILE *inf, int ap)
 
 	// fclose(inf); //KLEISIMO INPUT FILE
 	 //inf=fopen("input_file.txt","r"); //3ANAANOIGMA
-	printf("xaxaxa1");
+	//printf("xaxaxa1");
 	 for (i=0; i<1000; i++)
 	 {
 		
@@ -1083,7 +1084,7 @@ int leitourgia (FILE *inf, int ap)
 	///////////////////////////////////////////////////////////////////////////
 
 	fclose(inf);
-	printf("hahah2");
+	//printf("hahah2");
 
 	inf=fopen("input_file.txt","r"); //3ANAANOIGMA
 
@@ -1106,6 +1107,7 @@ int leitourgia (FILE *inf, int ap)
 				{
 					charaktiras=fgetc(inf);  //PAIRNEI CHARAKTIRA KAI TON VAZEI STIN SWSTI THESI STON PIN
 					pin[i][j]=charaktiras;
+					
 				}		
 
 		if (i==0)
@@ -1159,21 +1161,25 @@ int leitourgia (FILE *inf, int ap)
 					third[j]=pin[i][j];
 				}
 				w=2;
-				counter = i;  //krata thesi pou stamata
+				//counter2 = i;  //krata thesi pou stamata
+				counter2++;
+				//fprintf(col, "%d", counter2);
 				i=1000;
+				
 			}
 		
 
 		}
 		
 		///////////////
-	for  (i=0; i<counter; i++)
-		{ 
+	 
+	for  (i=0; i<counter2; i++)
+		{  //fprintf(col, "ddffffff");
 			z=0;
 			for (j=0; j<8; j++)
 			{ x=0;
 
-
+			
 
 			if (first[j] = pin[i][j])  //1os branch (loop) provle4eis
 				{
@@ -1374,7 +1380,7 @@ int leitourgia (FILE *inf, int ap)
 	fprintf(sig, "apotelesmata gia correlating: ");
 	fprintf (sig, "%d", hitcol); //pososto epitixias hit/all gia 2 bit
 	fprintf (sig, "/");
-	fprintf (sig, "%d \n", olcol);
+	fprintf (sig, "%d \n", sum1);
 
 
 

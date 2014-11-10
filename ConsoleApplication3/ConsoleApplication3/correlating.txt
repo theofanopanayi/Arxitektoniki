@@ -1,4 +1,12 @@
+hit
+hit
+hit
+hit
+hit
+hit
+hit
+hit
 update pred1 T 
 update pred2 T 
-kalesma 1bit : 0 fores 
-num of iner loops 0 
+kalesma 1bit : 8 fores 
+num of iner loops 8 
