@@ -59,7 +59,7 @@ int main()
 	while (y==0)
 	{
 		y=leitourgia(inf, ap, sum3, sum1, olcol, ar1, ar3, upd1, upd2, hitcol, colbit1sum);
-;
+
 		//printf("xaxaxa");
 	}
 
@@ -123,11 +123,11 @@ int main()
 
 
 
-int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int ar3, char upd1, char upd2, int hitcol, int colbit1sum);
+int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int ar3, char upd1, char upd2, int hitcol, int colbit1sum)
 
 { 
 
-	int corfun(FILE *inf,char apotel,char real,char pred1, char pred2,char upd1, char upd2,char pred, char now, int x, int z, int w, char sec[], char provle4i2, char provle4i1,int i, int j, char pin[1000][8],int p, char first[], int ap, char charaktiras, char hitcol, int counter2, int colbit1sum, char third[]);
+	int corfun(FILE *inf,char apotel,char real,char pred1, char pred2,char upd1, char upd2,char pred, char now, int x, int z, int w, char sec[], char provle4i2, char provle4i1, char pin[1000][8],int p, char first[8], int ap, char charaktiras, int i, char hitcol, int counter2, int colbit1sum, int j, char third[]);
 	int bit1fun(char, char,int, char, int, int,char);
 	int bit2fun(int j, char provle4i1, char apotel, char h_m, int ar3, int ar1, int ap, char provle4i2, int hm);
 	//gia ena bit
@@ -358,16 +358,13 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 
 	
 
-
-
-
 	fclose(inf);
 	//printf("hahah2");
 
 	inf=fopen("input_file.txt","r"); //3ANAANOIGMA
 
 
-	corfun(inf, first, charaktiras, apotel,real,pred1,pred2, upd1, upd2,pred, now, x,z, w,sec, provle4i2,provle4i1, pin[1000][8], p, ap, i, hitcol, counter2, colbit1sum, j,third);
+	corfun (inf,  apotel , real, pred1, pred2, upd1,  upd2, pred,  now,  x,  z,  w, sec,  provle4i2,  provle4i1, pin, p, first,ap, charaktiras, i, hitcol, counter2, colbit1sum, j, third);
 
 
 	
