@@ -23,6 +23,8 @@ int tester=0;
 int ar1=0;
 int sum1=0;
 int ap=0;
+int sum3=0;
+
 
 
 int main()
@@ -51,7 +53,7 @@ int main()
 	//int ap=0;
 	int y=0;
 	//int ap='t'; //apantisi an 8lei arxeia
-	int sum3=0;
+	//int sum3=0;
 	//int sum1=0;
 	int olcol=0;
 	//int ar1=0;
@@ -148,7 +150,7 @@ int leitourgia (/*FILE *inf,*/ int ap)
 	int tourfun( char provle4i1, char provle4i2, char apotel);
 	int bit2fun(int j, char provle4i1, char apotel, char h_m, int ar3, int ar1, int ap, char provle4i2, int hm);*/
 
-	int sum3=0;
+	//int sum3=0;
 	//int sum1=0;
 	int olcol=0;
 	//int ar1=0;
@@ -353,11 +355,19 @@ int leitourgia (/*FILE *inf,*/ int ap)
 				apot1bit = bit1fun(apot1bit ,provle4i1, apotel, ap, hm, sum3, sum1,provle4i2);
 				sum1++;
 				ar1++;
+				if (hm=='H')
+				{
+					sum3++;
+				}
 				
 				
 			}
 
 			apt2bit=bit2fun(j, provle4i1, apotel, h_m, ar3, ar1, ap, provle4i2,hm);
+			if (h_m == 'H')
+			{
+				ar3++;
+			}
 			//ar1++;
 			
 		}
