@@ -4,72 +4,90 @@
 #define true 1
 #define false 0
 
-int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int ar3, char upd1, char upd2, int hitcol, int colbit1sum);
+int leitourgia (/*FILE *inf,*/ int ap);
+int corfun(char nextprov,char apotel,char provle4i2, char provle4i1);
+int bit1fun(char,char, char,int, char, int, int,char);
+int tourfun( char provle4i1, char provle4i2, char apotel);
+int bit2fun(int j, char provle4i1, char apotel, char h_m, int ar3, int ar1, int ap, char provle4i2, int hm);
 
 
-
-FILE*outf;
+FILE *outf;
 FILE *bit1;
 FILE *bit2;
 FILE *col;
 FILE *sig;
+FILE *tour;
+FILE *inf;
+
+int tester=0;
 
 int main()
-
 {
-	FILE *inf;
+	/*printf("doke");
+	scanf("%d",&tester);
+	inf=fopen("input_file.txt","r");
+	if (!inf) return 0;
+	sig=fopen("apotelesmata.txt","w");
+	if (!sig) return 0;
+
+	if (tester == 1)
+	{
+	outf=fopen("output_file.txt","w");
+	if (!outf) return 0;
+	bit1=fopen("output_1bitfile.txt","w");
+	if (!bit1) return 0;
+	bit2=fopen("output_2bitfile.txt","w");
+	if (!bit2) return 0;
+	col=fopen("correlating.txt","w");
+	if (!col) return 0;
+	tour=fopen("tournoua.txt","w");
+	if (!tour) return 0;
+	}*/
+
+	int ap=0;
 	int y=0;
-	int ap; //apantisi an 8lei arxeia
+	//int ap='t'; //apantisi an 8lei arxeia
 	int sum3=0;
 	int sum1=0;
 	int olcol=0;
 	int ar1=0;
 	int ar3=0;
-	char upd1;
-	char upd2;
+	char upd1='t';
+	char upd2='t';
 	int hitcol=0;
 	int colbit1sum=0;
-
-
+	int hitour=0;
+	//y=leitourgia(inf);
 	inf=fopen("input_file.txt","r");
-
-	printf( "theleis arxeia? 0 or 1 \n");
-	scanf ("%d", &ap);
-	
-
-	
+	if (!inf) return 0;
+	sig=fopen("apotelesmata.txt","w");
+	if (!sig) return 0;
+	printf("theleis arxeia? 0 or 1 \n");
+	scanf("%d",&ap);
 	if (ap==1)
 	{
-
-	outf= fopen("output_file.txt","w");
-	bit1= fopen("output_1bitfile.txt","w");
-	bit2= fopen("output_2bitfile.txt","w");
-	col= fopen("correlating.txt","w");
-
+	outf=fopen("output_file.txt","w");
+	if (!outf) return 0;
+	bit1=fopen("output_1bitfile.txt","w");
+	if (!bit1) return 0;
+	bit2=fopen("output_2bitfile.txt","w");
+	if (!bit2) return 0;
+	col=fopen("correlating.txt","w");
+	if (!col) return 0;
+	tour=fopen("tournoua.txt", "w");
+	if (!tour) return 0;
 	}
-
-	sig= fopen ("apotelesmata.txt", "w");
-
-	//y=leitourgia(inf);
-	
-
-
-
-
 	while (y==0)
 	{
-		y=leitourgia(inf, ap, sum3, sum1, olcol, ar1, ar3, upd1, upd2, hitcol, colbit1sum);
+		y=leitourgia(/*inf,*/ ap);
 
 		//printf("xaxaxa");
 	}
 
-
-
-
-	fprintf(sig, "apotelesma ena bit: ");
-	fprintf (sig, "%d", sum3); //pososto epitixias hit/all gia 1 bit
-	fprintf (sig, "/");
-	fprintf (sig, "%d \n", sum1);
+	fprintf(sig,"apotelesma ena bit: ");
+	fprintf(sig,"%d",sum3); //pososto epitixias hit/all gia 1 bit
+	fprintf(sig,"/");
+	fprintf(sig,"%d \n",sum1);
 
 
 	
@@ -90,46 +108,44 @@ int main()
 	}
 
 
-	fprintf(sig, "apotelesmata gia correlating: ");
-	fprintf (sig, "%d", hitcol); //pososto epitixias hit/all gia 2 bit
-	fprintf (sig, "/");
-	fprintf (sig, "%d \n", sum1);
+	fprintf(sig,"apotelesmata gia correlating: ");
+	fprintf(sig,"%d", hitcol); //pososto epitixias hit/all gia 2 bit
+	fprintf(sig,"/");
+	fprintf(sig,"%d \n", sum1);
 
 	
 //KLEISIMO ARXEIWN
+	fclose(inf);
+	fclose(sig);
 	if (ap==1)
 	{
 	 fclose(outf);
 	 fclose(bit1); 
 	 fclose(bit2);
 	 fclose(col);
+	 fclose(tour);
 	}
-
-		fclose(inf);
-		fclose(sig);
-
-
 	return(0);
 
 }
 
-
-
-
-
-
-
-
-
-
-
-int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int ar3, char upd1, char upd2, int hitcol, int colbit1sum)
+int leitourgia (/*FILE *inf,*/ int ap)
 
 { 
-
-	int corfun(FILE *inf,char apotel,char real,char pred1, char pred2,char upd1, char upd2,char pred, char now, int x, int z, int w, char sec[], char provle4i2, char provle4i1, char pin[1000][8],int p, char first[8], int ap, char charaktiras, int i, char hitcol, int counter2, int colbit1sum, int j, char third[]);
+	/*int corfun(char nextprov,char apotel,char provle4i2, char provle4i1);
 	int bit1fun(char, char,int, char, int, int,char);
-	int bit2fun(int j, char provle4i1, char apotel, char h_m, int ar3, int ar1, int ap, char provle4i2, int hm);
+	int tourfun( char provle4i1, char provle4i2, char apotel);
+	int bit2fun(int j, char provle4i1, char apotel, char h_m, int ar3, int ar1, int ap, char provle4i2, int hm);*/
+
+	int sum3=0;
+	int sum1=0;
+	int olcol=0;
+	int ar1=0;
+	int ar3=0;
+	char upd1='T';
+	char upd2='t';
+	int hitcol=0; 
+	int colbit1sum=0;
 	//gia ena bit
 	//int sum1=0; //sum of all 1 bit
 	//int sum2=1; //sum of apotelesma=not taken
@@ -141,7 +157,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 	//int ar2=0;
 	//int ar3=0; // sum of hits 2 bit
 	int j=0; //counter gia pin
-	bool apot;
+	bool apot=1;
 	int x=0;
 	int counter = 0;
 	//int branch=0;   //num of branches
@@ -151,34 +167,34 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 	char sec[8];
 	char third[8];
 	char pin[1000][8];
-	char hm,h_m; //hit miss
+	char hm='t';
+	char h_m='t'; //hit miss
 	int i=0;
 	int z=0;
 	int a=0;
 	int w=0;
 	int k=0;
-	char provle4i1;
-	char provle4i2;
-	char apotel;
-	char prov;
+	char provle4i1='T';
+	char provle4i2='T';
+	char apotel, hitour='T';
+	char prov='T';
+	char apot1bit='T';
 	//int colbit1sum=0;
 	int colsum=0;
 	//int hitcol=0;
 	//int olcol=0;
-	char real;
+	char real='T';
 	//char upd1;
 	//char upd2;
-	char pred1;
-	char pred2;
-	char pred;
-	char now;
+	char pred1='T';
+	char pred2='T';
+	char pred='T';
+	char now='T';
 	int counter2=0;
-
-	
+	char corapot='T';
+	char nextprov='T';
+	int apt2bit=0;
 	//anoigma arxeiwn
-
-
-	
 /*	charaktiras = fgetc(inf);
 
 			while (charaktiras!=EOF)  //elegxos
@@ -212,7 +228,6 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 	//printf("xaxaxa1");
 	 for (i=0; i<1000; i++)
 	 {
-		
 				for (j=0; j<8; j++)
 				{
 					charaktiras=fgetc(inf);  //PAIRNEI CHARAKTIRA KAI TON VAZEI STIN SWSTI THESI STON PIN
@@ -233,7 +248,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 		else if (i>=1 && w==0)
 		{
 			p=0;
-			for (j =0;j<8;j++)
+			for (j=0;j<8;j++)
 			{
 				if (first[j]!=pin[i][j])  //ELEGXOS AN EINAI ANISOS TOU FIRST
 				{
@@ -256,7 +271,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 		else if (i>=1  && w==1)
 		{
 			p=0;
-		for (j =0;j<8;j++)
+		for (j=0;j<8;j++)
 		{
 			if (first[j]!=pin[i][j])   //AN DEN EINAI ISOS ME FIRST KAI SEC TOTE EINAI THIRD
 			{
@@ -274,12 +289,9 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			//branch++;
 			}
 			w=2;
-			counter = i;  //krata thesi pou stamata
-
+			counter=i;  //krata thesi pou stamata
 			i=1000;
 			}
-		
-
 		}
 		/////////////////
 		for  (i=0; i<counter; i++)
@@ -287,12 +299,12 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			z=0;
 			for (j=0; j<8; j++)
 			{ x=0;
-				if (first[j] = pin[i][j])  //1os branch (loop) provle4eis
+				if (first[j] == pin[i][j])  //1os branch (loop) provle4eis
 				{
 					x++;
 				}
 
-				if (x=8 && z==0);  //molis diavasei first kai to z einai 0 gia first
+				if (x==8 && z==0);  //molis diavasei first kai to z einai 0 gia first
 				{
 					provle4i1 = 'T';
 					provle4i2 = 'N';
@@ -302,12 +314,12 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			}
 			for (j=0; j<8; j++)
 			{ x=0;
-				if (sec[j] = pin [i][j])  //2os branch (loop) provle4eis
+				if (sec[j] == pin [i][j])  //2os branch (loop) provle4eis
 				{
 					x++;
 				}
 
-				if (x=8 && z==1);  //diavazei sec k elegxei an z=1
+				if (x==8 && z==1);  //diavazei sec k elegxei an z=1
 				{
 					provle4i1 = 'T';  
 					provle4i2 = 'N';
@@ -327,11 +339,11 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 					apotel = 'N';
 				}
 
-				bit1fun(provle4i1, apotel, ap, hm, sum3, sum1,provle4i2);
-
+				apot1bit = bit1fun(apot1bit ,provle4i1, apotel, ap, hm, sum3, sum1,provle4i2);
+				
 			}
 
-			bit2fun(j, provle4i1, apotel, h_m, ar3, ar1, ap, provle4i2,hm);
+			apt2bit=bit2fun(j, provle4i1, apotel, h_m, ar3, ar1, ap, provle4i2,hm);
 		}
 
 		}
@@ -353,30 +365,42 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 		 fprintf(outf,"\n");
 		 }
 	 }
-
-
-
-	
-
-	fclose(inf);
+/*	fclose(inf);
 	//printf("hahah2");
 
 	inf=fopen("input_file.txt","r"); //3ANAANOIGMA
 
 
-	corfun (inf,  apotel , real, pred1, pred2, upd1,  upd2, pred,  now,  x,  z,  w, sec,  provle4i2,  provle4i1, pin, p, first,ap, charaktiras, i, hitcol, counter2, colbit1sum, j, third);
+	corapot = corfun (nextprov, apotel , provle4i2,  provle4i1);
+	apt2bit=tourfun(provle4i1, provle4i2, apotel);
+	if (nextprov=='T' || nextprov=='t')
+	{
 
+		fprintf(tour, "%c\n" ,apot1bit);
+		if (apot1bit == 'T')
+		{
+			hitour++;
+		}
+		
+	}
+	else if (nextprov=='F' || nextprov=='f')
+	{
+		fprintf(tour, "%c\n", corapot); 
 
-	
+		if (corapot == 'h')
+		{
+			hitour++;
+		}
+	}*/
 		charaktiras=fgetc(inf);
-
+		printf("%c",charaktiras);
 		if (charaktiras==EOF)
 			{
 			return 1;
 			}
 		else
 			{
-				return 0;
+			return 0;
 			}
 
 
@@ -392,12 +416,16 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 
 
 
-		int bit1fun(char provle4i1, char apotel,int ap, char hm, int sum3, int sum1,char provle4i2)
+		int bit1fun(char apot1bit, char provle4i1, char apotel,int ap, char hm, int sum3, int sum1,char provle4i2)
 		{
+
+	//bit1= fopen("output_1bitfile.txt","w");
+	
 
 			// 1 bit 1os branch
 			if (provle4i1 == 'T' && apotel == 'T')
 			{
+				apot1bit='T';
 				//provle4i = 'T';
 				if (ap==1)
 				{
@@ -409,6 +437,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			}
 			else if (provle4i1 == 'T' && apotel == 'N')
 			{
+				apot1bit='N';
 				hm = 'M';
 				if (ap==1)
 				{
@@ -421,6 +450,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			}
 			else if (provle4i1 == 'N' && apotel == 'T')
 			{
+				apot1bit='T';
 				hm = 'M';
 				if (ap==1)
 				{
@@ -432,6 +462,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			}
 			else if (provle4i1 == 'N' && apotel == 'N')
 			{
+				apot1bit='N';
 				hm = 'H';
 				sum1++;
 				if (ap==1)
@@ -498,7 +529,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 				
 			}
 
-						
+			return (apot1bit);				
 		}
 
 
@@ -516,6 +547,10 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 
 		int bit2fun(int j, char provle4i1, char apotel, char h_m, int ar3, int ar1, int ap, char provle4i2, int hm)
 		{
+
+
+		//bit2= fopen("output_2bitfile.txt","w");
+
 			for (j=0; j<8; j++)
 		{
 
@@ -717,7 +752,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			}
 			
 	}
-
+	return (0);
 		}
 
 
@@ -725,10 +760,35 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 
 
 //CORRELATING FYNCTION
-		int corfun(FILE *inf,char apotel,char real,char pred1, char pred2,char upd1, char upd2,char pred, char now, int x, int z, int w, char sec[], char provle4i2, char provle4i1, char pin[1000][8],int p, char first[8], int ap, char charaktiras, int i, char hitcol, int counter2, int colbit1sum, int j, char third[])
+		int corfun(char nextprov,char apotel,char provle4i2, char provle4i1)
 		{
-
-			apotel='T';
+		
+			//col= fopen("correlating.txt","w");
+			char corapot='t';
+			char real='t'; 
+			char pred1='t';
+			char pred2='t';
+			char upd1='t';
+			char upd2='t';
+			char pred='t';
+			char charaktiras='t';
+			char now='t'; 
+			char hitcol='t';
+			int x=0;
+			int z=0;
+			int w=0;
+			int p=0;
+			int i=0;
+			int ap=0;
+			int counter2=0;
+			int colbit1sum=0;
+			int j=0;
+			char sec[8];
+			char first[8];
+			char third[8];
+			char pin[1000][8];
+		corapot = 'T';
+		apotel='T';
 		real= 'T';
 		pred1= 'T';
 		pred2= 'T';
@@ -821,12 +881,12 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 
 			
 
-			if (first[j] = pin[i][j])  //1os branch (loop) provle4eis
+			if (first[j] == pin[i][j])  //1os branch (loop) provle4eis
 				{
 					x++;
 				}
 
-				if (x=8 && z==0);  //molis diavasei first kai to z einai 0 gia first
+				if (x==8 && z==0);  //molis diavasei first kai to z einai 0 gia first
 				{
 					provle4i1 = 'T';
 					provle4i2 = 'N';
@@ -836,12 +896,12 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			}
 			for (j=0; j<8; j++)
 			{ x=0;
-				if (sec[j] = pin [i][j])  //2os branch (loop) provle4eis
+				if (sec[j] == pin [i][j])  //2os branch (loop) provle4eis
 				{
 					x++;
 				}
 
-				if (x=8 && z==1);  //diavazei sec k elegxei an z=1
+				if (x==8 && z==1);  //diavazei sec k elegxei an z=1
 				{
 					provle4i1 = 'T';  
 					provle4i2 = 'N';
@@ -855,10 +915,12 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 				if (pin[i][j] == pin[i+1][j])  //apotelesmata
 				{
 					apotel = 'T';
+					corapot = 'T';
 				}
 				else
 				{
 					apotel = 'N';
+					corapot = 'N';
 				}
 
 
@@ -871,6 +933,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			
 				if (provle4i1 == 'T' && apotel == 'T')
 				{
+					corapot = 'T';
 				if (ap==1)
 				{
 				fprintf (col, "hit\n");
@@ -883,6 +946,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			}
 			else if (provle4i1 == 'T' && apotel == 'N')
 			{
+				corapot = 'N';
 				//hm = 'M';
 				if (ap==1)
 				{
@@ -896,6 +960,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			}
 			else if (provle4i1 == 'N' && apotel == 'T')
 			{
+				corapot = 'T';
 				//hm = 'M';
 				if (ap==1)
 				{
@@ -908,6 +973,7 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			}
 			else if (provle4i1 == 'N' && apotel == 'N')
 			{
+				corapot = 'N';
 				//hm = 'H';
 				//sum1++;
 				if (ap==1)
@@ -948,15 +1014,16 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 			pred=pred2;
 		}
 
-		if (real=pred)
+		if (real==pred)
 		{
 			hitcol++;
+			corapot = 'T';
 		}
 		
 
 		if (now!=pred)
 		{
-			if (real='T')
+			if (real=='T')
 			{
 				upd1 = 'N';
 			}
@@ -998,6 +1065,119 @@ int leitourgia (FILE *inf, int ap, int sum3, int sum1, int olcol, int ar1, int a
 
 	}
 
+	return (corapot);
+
+	}
 
 
+
+
+
+	//TOURNOUA FUNCTION
+
+	int tourfun( char provle4i1, char provle4i2, char apotel)
+
+	{
+
+		int j=0;
+		char h_m='T';
+		int ar3=0; 
+		int ar1=0; 
+		int ap=0;
+		int hm=0;
+		char nextprov='T';
+
+			for (j=0; j<8; j++)
+		{
+
+
+			//1os branch 2 bit
+
+			char nextprov;
+
+			if (provle4i1=='T' && apotel=='T')      //T TAKEN1  N NOT_TAKEN1  I TAKEN1 D NOT_TAKEN2
+			{
+				nextprov = 'T';
+			}
+			else if (provle4i1=='T' && apotel=='N')
+			{
+				nextprov = 't';
+			}
+
+			else if (provle4i1=='I' && apotel=='T')
+			{
+				nextprov = 'T';
+				
+			}
+			else if (provle4i1=='I' && apotel=='N')
+			{
+				nextprov = 'n';
+				
+			}
+			else if (provle4i1=='D' && apotel=='N')
+			{
+				nextprov = 'N';
+			}
+			else if (provle4i1=='D' && apotel=='T')
+			{
+				nextprov = 't';
+				
+			}
+			else if (provle4i1=='N' && apotel=='T')
+			{
+				nextprov = 'n';
+				
+			}
+			else if (provle4i1=='N' && apotel=='N')
+			{
+				nextprov = 'N';
+				
+			}
+
+
+	//2os branch 2 bit
+
+
+
+
+			
+			if (provle4i2=='T' && apotel=='T')      //T TAKEN1  N NOT_TAKEN1  I TAKEN1 D NOT_TAKEN2
+			{
+				nextprov = 'T';
+			}
+			else if (provle4i2=='T' && apotel=='N')
+			{
+				nextprov = 't';
+			}
+
+			else if (provle4i2=='I' && apotel=='T')
+			{
+				nextprov = 'T';
+			}
+			else if (provle4i2=='I' && apotel=='N')
+			{
+				nextprov= 'n';
+			}
+			else if (provle4i2=='D' && apotel=='N')
+			{
+				nextprov = 'N';
+			}
+			else if (provle4i2=='D' && apotel=='T')
+			{
+				nextprov = 't';
+				
+			}
+			else if (provle4i2=='N' && apotel=='T')
+			{
+				nextprov = 'n';
+			}
+			else if (provle4i2=='N' && apotel=='N')
+			{
+				nextprov = 'N';
+			}
+			
+	}
+
+		
+		return (nextprov);
 	}
