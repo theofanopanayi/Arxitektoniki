@@ -24,7 +24,8 @@ int ar1=0;
 int sum1=0;
 int ap=0;
 int sum3=0;
-
+char hm='T';
+char h_m='T';
 
 
 int main()
@@ -180,8 +181,8 @@ int leitourgia (/*FILE *inf,*/ int ap)
 	char sec[8];
 	char third[8];
 	char pin[1000][8];
-	char hm='t';
-	char h_m='t'; //hit miss
+	//char hm='t';
+	//char h_m='t'; //hit miss
 	int i=0;
 	int z=0;
 	int a=0;
@@ -407,7 +408,7 @@ if (ap==0 || ap==1)
 
 	if (nextprov=='T' || nextprov=='t')
 	{
-
+		fprintf(tour, "1bit\n");
 		fprintf(tour, "%c\n" ,apot1bit);
 		if (apot1bit == 'T')
 		{
@@ -418,6 +419,7 @@ if (ap==0 || ap==1)
 	}
 	else if (nextprov=='F' || nextprov=='f')
 	{
+		fprintf(tour, "corellator\n");
 		fprintf(tour, "%c\n", corapot); 
 
 		if (corapot == 'h')
@@ -1122,7 +1124,7 @@ if (ap==0 || ap==1)
 	{
 
 		int j=0;
-		char h_m='T';
+		//char h_m='T';
 		int ar3=0; 
 		//int ar1=0; 
 		//int ap=0;
