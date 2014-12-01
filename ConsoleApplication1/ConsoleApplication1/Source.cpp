@@ -20,6 +20,8 @@ FILE *tour;
 FILE *inf;
 
 int tester=0;
+int ar1=0;
+int sum1=0;
 
 int main()
 {
@@ -48,9 +50,9 @@ int main()
 	int y=0;
 	//int ap='t'; //apantisi an 8lei arxeia
 	int sum3=0;
-	int sum1=0;
+	//int sum1=0;
 	int olcol=0;
-	int ar1=0;
+	//int ar1=0;
 	int ar3=0;
 	char upd1='t';
 	char upd2='t';
@@ -114,6 +116,13 @@ int main()
 	fprintf(sig,"%d \n", sum1);
 
 	
+
+	fprintf(sig, "apotelesmata gia tournoua:");
+	fprintf(sig,"%d", hitour );
+	fprintf(sig, "/");
+	fprintf(sig, "%d \n", sum1 );
+
+	
 //KLEISIMO ARXEIWN
 	fclose(inf);
 	fclose(sig);
@@ -138,9 +147,9 @@ int leitourgia (/*FILE *inf,*/ int ap)
 	int bit2fun(int j, char provle4i1, char apotel, char h_m, int ar3, int ar1, int ap, char provle4i2, int hm);*/
 
 	int sum3=0;
-	int sum1=0;
+	//int sum1=0;
 	int olcol=0;
-	int ar1=0;
+	//int ar1=0;
 	int ar3=0;
 	char upd1='T';
 	char upd2='t';
@@ -340,10 +349,15 @@ int leitourgia (/*FILE *inf,*/ int ap)
 				}
 
 				apot1bit = bit1fun(apot1bit ,provle4i1, apotel, ap, hm, sum3, sum1,provle4i2);
+				sum1++;
+				ar1++;
+				
 				
 			}
 
 			apt2bit=bit2fun(j, provle4i1, apotel, h_m, ar3, ar1, ap, provle4i2,hm);
+			//ar1++;
+			
 		}
 
 		}
@@ -380,6 +394,7 @@ int leitourgia (/*FILE *inf,*/ int ap)
 		if (apot1bit == 'T')
 		{
 			hitour++;
+			
 		}
 		
 	}
@@ -390,8 +405,13 @@ int leitourgia (/*FILE *inf,*/ int ap)
 		if (corapot == 'h')
 		{
 			hitour++;
+			
 		}
-	}*/
+
+
+	}
+	
+	*/
 		charaktiras=fgetc(inf);
 		printf("%c",charaktiras);
 		if (charaktiras==EOF)
@@ -529,7 +549,8 @@ int leitourgia (/*FILE *inf,*/ int ap)
 				
 			}
 
-			return (apot1bit);				
+			return (apot1bit);
+			//return(sum1);
 		}
 
 
@@ -1082,7 +1103,7 @@ int leitourgia (/*FILE *inf,*/ int ap)
 		int j=0;
 		char h_m='T';
 		int ar3=0; 
-		int ar1=0; 
+		//int ar1=0; 
 		int ap=0;
 		int hm=0;
 		char nextprov='T';
@@ -1098,39 +1119,81 @@ int leitourgia (/*FILE *inf,*/ int ap)
 			if (provle4i1=='T' && apotel=='T')      //T TAKEN1  N NOT_TAKEN1  I TAKEN1 D NOT_TAKEN2
 			{
 				nextprov = 'T';
+
+				if (ap==1)
+					{
+						fprintf(tour, "hit\n");
+
+					}
 			}
 			else if (provle4i1=='T' && apotel=='N')
 			{
 				nextprov = 't';
+
+				if (ap==1)
+					{
+						fprintf(tour, "miss\n");
+
+					}
 			}
 
 			else if (provle4i1=='I' && apotel=='T')
 			{
 				nextprov = 'T';
+				if (ap==1)
+					{
+						fprintf(tour, "hit\n");
+
+					}
 				
 			}
 			else if (provle4i1=='I' && apotel=='N')
 			{
 				nextprov = 'n';
+				if (ap==1)
+					{
+						fprintf(tour, "miss\n");
+
+					}
 				
 			}
 			else if (provle4i1=='D' && apotel=='N')
 			{
 				nextprov = 'N';
+				if (ap==1)
+					{
+						fprintf(tour, "hit\n");
+
+					}
 			}
 			else if (provle4i1=='D' && apotel=='T')
 			{
 				nextprov = 't';
+				if (ap==1)
+					{
+						fprintf(tour, "miss\n");
+
+					}
 				
 			}
 			else if (provle4i1=='N' && apotel=='T')
 			{
 				nextprov = 'n';
+				if (ap==1)
+					{
+						fprintf(tour, "miss\n");
+
+					}
 				
 			}
 			else if (provle4i1=='N' && apotel=='N')
 			{
 				nextprov = 'N';
+				if (ap==1)
+					{
+						fprintf(tour, "hit\n");
+
+					}
 				
 			}
 
@@ -1144,36 +1207,76 @@ int leitourgia (/*FILE *inf,*/ int ap)
 			if (provle4i2=='T' && apotel=='T')      //T TAKEN1  N NOT_TAKEN1  I TAKEN1 D NOT_TAKEN2
 			{
 				nextprov = 'T';
+				if (ap==1)
+					{
+						fprintf(tour, "hit\n");
+
+					}
 			}
 			else if (provle4i2=='T' && apotel=='N')
 			{
 				nextprov = 't';
+				if (ap==1)
+					{
+						fprintf(tour, "miss\n");
+
+					}
 			}
 
 			else if (provle4i2=='I' && apotel=='T')
 			{
 				nextprov = 'T';
+				if (ap==1)
+					{
+						fprintf(tour, "hit\n");
+
+					}
 			}
 			else if (provle4i2=='I' && apotel=='N')
 			{
 				nextprov= 'n';
+				if (ap==1)
+					{
+						fprintf(tour, "miss\n");
+
+					}
 			}
 			else if (provle4i2=='D' && apotel=='N')
 			{
 				nextprov = 'N';
+				if (ap==1)
+					{
+						fprintf(tour, "hit\n");
+
+					}
 			}
 			else if (provle4i2=='D' && apotel=='T')
 			{
 				nextprov = 't';
+				if (ap==1)
+					{
+						fprintf(tour, "miss\n");
+
+					}
 				
 			}
 			else if (provle4i2=='N' && apotel=='T')
 			{
 				nextprov = 'n';
+				if (ap==1)
+					{
+						fprintf(tour, "miss\n");
+
+					}
 			}
 			else if (provle4i2=='N' && apotel=='N')
 			{
 				nextprov = 'N';
+				if (ap==1)
+					{
+						fprintf(tour, "hit\n");
+
+					}
 			}
 			
 	}
