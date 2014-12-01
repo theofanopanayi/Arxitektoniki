@@ -22,6 +22,8 @@ FILE *inf;
 int tester=0;
 int ar1=0;
 int sum1=0;
+int ap=0;
+
 
 int main()
 {
@@ -46,7 +48,7 @@ int main()
 	if (!tour) return 0;
 	}*/
 
-	int ap=0;
+	//int ap=0;
 	int y=0;
 	//int ap='t'; //apantisi an 8lei arxeia
 	int sum3=0;
@@ -379,14 +381,20 @@ int leitourgia (/*FILE *inf,*/ int ap)
 		 fprintf(outf,"\n");
 		 }
 	 }
+
 /*	fclose(inf);
 	//printf("hahah2");
 
 	inf=fopen("input_file.txt","r"); //3ANAANOIGMA
+*/
 
-
+if (ap==0 || ap==1)
+{
+	for (i=0; i<30; i++)
+	{
 	corapot = corfun (nextprov, apotel , provle4i2,  provle4i1);
 	apt2bit=tourfun(provle4i1, provle4i2, apotel);
+
 	if (nextprov=='T' || nextprov=='t')
 	{
 
@@ -411,7 +419,7 @@ int leitourgia (/*FILE *inf,*/ int ap)
 
 	}
 	
-	*/
+	//*/
 		charaktiras=fgetc(inf);
 		printf("%c",charaktiras);
 		if (charaktiras==EOF)
@@ -423,6 +431,9 @@ int leitourgia (/*FILE *inf,*/ int ap)
 			return 0;
 			}
 
+	}
+}
+		//fclose(inf);
 
 		}
 
@@ -800,7 +811,7 @@ int leitourgia (/*FILE *inf,*/ int ap)
 			int w=0;
 			int p=0;
 			int i=0;
-			int ap=0;
+			//int ap=0;
 			int counter2=0;
 			int colbit1sum=0;
 			int j=0;
@@ -1104,7 +1115,7 @@ int leitourgia (/*FILE *inf,*/ int ap)
 		char h_m='T';
 		int ar3=0; 
 		//int ar1=0; 
-		int ap=0;
+		//int ap=0;
 		int hm=0;
 		char nextprov='T';
 
